@@ -83,67 +83,8 @@ namespace Bubla
         private static SFML.Graphics.Text loreAchivment;
         private const float speedAnimationAchivment = 2.2f;
 
-        // lua
-
-
-        // debug
-        //bool debug = true;
-        //string outExeFile = "D:\\GameDev\\игры на движке bubla\\mine\\MyFramework.exe";
-
         private static void Main(string[] args)
         {
-            /*using (SpeechSynthesizer synthesizer = new SpeechSynthesizer())
-            {
-                synthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.Child);
-                synthesizer.Speak("123");
-                // show installed voices
-                *//*foreach (var v in synthesizer.GetInstalledVoices().Select(v => v.VoiceInfo))
-                {
-                    Console.WriteLine("Name:{0}, Gender:{1}, Age:{2}",
-                      v.Description, v.Gender, v.Age);
-                }
-
-                // select male senior (if it exists)
-                synthesizer.SelectVoiceByHints(VoiceGender.Male, VoiceAge.Senior);
-
-                // select audio device
-                synthesizer.SetOutputToDefaultAudioDevice();
-
-                // build and speak a prompt
-                *//*
-            }*/
-
-            
-            
-            //Console.ForegroundColor = ConsoleColor.Red;
-            //Lua lua = new Lua();
-
-            //lua["tesxtList"] = new List<int>() { 3, 1, 2 };
-
-            //lua.DoString("ts:Get(\"vadim\"):SetName(\"i'm not gay!\");" + "\n" + "print(ts:Get(\"vadim\"))");
-
-            //Console.WriteLine(OtherFile.ConvertFromPathInNameFile(OtherFile.GetFiles()[0]));
-            /*string host = "sql8.freemysqlhosting.net/sql8657406";
-            string user = "sql8657406";
-            string password = "DmZIiMBY9k";
-
-            Sql.Init(host, user, password);
-
-            string[] values = Sql.ReadTableLimit("users", 4, 2);
-
-
-            for (int i = 0; i < values.Length; i++)
-            {
-                Console.Write(values[i] + " ");
-            }*/
-            /*Console.WriteLine($"year: {Command.GetYear()}, month: {Command.GetMonth()}, day: {Command.GetDay()}, hour: {Command.GetHour()}," +
-                $" minute: {Command.GetMinute()}, second: {Command.GetSecond()}, Millisecond: {Command.GetMillisecond()}, ");
-            Console.WriteLine("\n\n\n\n\n");*/
-            //Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "\\test.txt");
-            //Console.WriteLine(Command.ReadFile("test.txt"));
-            //Command.WriteFile("test.txt", "hi!!!!");
-            //Command.OpenFile("assets\\soundTest.bubla");
-
             try
             {
                 // acivments init
@@ -179,36 +120,8 @@ namespace Bubla
                 aabb.UpperBound.Set(100000, 100000); // Указываем нижний правый угол конца границ
                 Vec2 g = new Vec2(0, 0); // Устанавливаеи вектор гравитации
                 world = new Box2DX.Dynamics.World(aabb, g, false); // Создаем мир
-                //ContactListener contactListener = new ContactListener();
-                //world.SetContactListener(new Solver());
-                //Console.WriteLine(debug);
 
                 SSetScene(null);
-
-                
-
-                //Save.SWrite("key", "1234567890");
-                //Console.WriteLine(Save.SRead("key"));
-                //debug = false;
-                //SetColorGameObjects(0, 255, 0);
-
-
-
-                //Console.ForegroundColor = ConsoleColor.Yellow;
-
-                /*lua.DoString(@"
-                        Game:SetGravity(0, 1)
-                        Text:Get('textTest'):SetText('абвгдеёжзийклмнопрстуфхцчшщьыъэюя  АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯ')
-
-                        function printHello()
-                            print('hi from lua!');
-                        end 
-                        ");*/
-
-
-
-                //Console.ForegroundColor = ConsoleColor.White;
-                //Console.WriteLine("lua test = " + ((bool)func.Call()[0]));
 
                 if (debug)
                 {
@@ -216,9 +129,7 @@ namespace Bubla
                     consoleTexture.OutlineThickness = 2;
                     consoleTexture.OutlineColor = SFML.Graphics.Color.White;
                     consoleTexture.FillColor = new SFML.Graphics.Color(0, 0, 0, 200);
-                    // consoleTexture.Position = pos;
                     consoleTexture.Size = new Vector2f(SFML.Window.VideoMode.DesktopMode.Width, 100);
-                    //consoleTexture.Origin = new Vector2f(size.X / 2, size.Y / 2);
                     consoleText = new SFML.Graphics.Text();
                     try
                     {
@@ -237,95 +148,15 @@ namespace Bubla
                     Device.Connect();
                 }
 
-                /*GameObject.Get("s 0123").AddAnimator("test", 0.5f, new int[] {
-                0, 1}, true);
-                Bubla.GameObject.Get("s 0123").PlayAnimation("test");*/
-
-                //SetScene("12377");
-
-                //Console.WriteLine(" ");
                 foreach (KeyValuePair<string, GameObject> listGameObject in GameObject.GetGameObjects())
                 {
                     GameObject gameObject = listGameObject.Value;
-                    //Console.WriteLine($"name = {gameObject.Name}; pos = {gameObject.Position.X}, {gameObject.Position.Y}");
                 }
-                /*for(int i = 0; i < 5 ;i++)
-                {
-                    World.Spawn("обьект 2", new Vector2f(600, 200 + (20 * i)));
-                }
-
-                World.Kill(0);
-                World.Kill(4);*/
-
-
-                // 728, 335  SFML.Window.VideoMode.DesktopMode.Height
-
-                
 
                 window = new RenderWindow(new SFML.Window.VideoMode((uint)width, (uint)height), titleGame, !debug ? Styles.Fullscreen : Styles.Close);
-                //window = new RenderWindow(new SFML.Window.VideoMode(SFML.Window.VideoMode.DesktopMode.Width, SFML.Window.VideoMode.DesktopMode.Height), titleGame, Styles.Fullscreen);
                 window.SetView(camera);
 
                 string path = AppDomain.CurrentDomain.BaseDirectory + "assets";
-                //tring code = File.ReadAllText("C:\\Users\\1\\source\\repos\\MyFramework\\MyFramework\\bin\\x86\\Debug\\assets\\mySourse.cs");
-                /*foreach (FileInfo file in new DirectoryInfo(path).GetFiles())
-                {
-                    //Console.WriteLine(file);
-                    if (file.Name.Equals("ScriptButtonHandler.cs"))
-                    {
-                        scriptButtonHandler = new Script(file.Name);
-                        //Console.WriteLine("yes");
-                        continue;
-                    }
-                    *//*if (file.Name.EndsWith(".cs"))
-                    {
-                        scripts.Add(new Script(file.Name));
-                    }*//*
-                }*/
-
-
-                //Script script = new Script("C:\\Users\\1\\source\\repos\\MyFramework\\MyFramework\\bin\\x86\\Debug\\test assets\\mySourse.cs");
-
-                /*using (FileStream fstream = new FileStream("C:\\Users\\1\\source\\repos\\MyFramework\\MyFramework\\mySourse.cs", FileMode.Open))
-                {
-                    byte[] buffer = new byte[fstream.Length];
-                    // считываем данные
-                    Task task = fstream.ReadAsync(buffer, 0, buffer.Length);
-                    // декодируем байты в строку
-                    code = Encoding.Default.GetString(buffer);
-                    Console.WriteLine(code);
-                }*/
-                //Console.WriteLine(code);
-                /*CSharpCodeProvider provider = new CSharpCodeProvider();
-                CompilerParameters parameters = new CompilerParameters();
-                parameters.GenerateInMemory = true;
-                parameters.ReferencedAssemblies.Add(Assembly.GetEntryAssembly().Location);
-
-                CompilerResults results = provider.CompileAssemblyFromSource(parameters, code);
-                if (results.Errors.HasErrors)
-                {
-                    string errors = "";
-                    foreach (CompilerError error in results.Errors)
-                    {
-                        errors += string.Format("Error #{0}: {1}\n", error.ErrorNumber, error.ErrorText);
-                    }
-                    Console.Write(errors);
-                }
-                else
-                {
-                    Assembly assembly = results.CompiledAssembly;
-                    Type[] types = assembly.GetTypes();
-                    foreach (Type type in types)
-                    {
-                        //Console.WriteLine(type.Name);
-                        Type program = assembly.GetType(type.Namespace + "." + type.Name);
-                        MethodInfo say = program.GetMethod("Start");
-                        //say.Invoke(parameters, null);
-                    }
-                    *//*Type program = assembly.GetType("Packet.sourseClass");
-                    MethodInfo say = program.GetMethod("say");
-                    say.Invoke(null, null);*//*
-                }*/
 
                 window.Closed += (s, e) =>
                 {
@@ -379,19 +210,13 @@ namespace Bubla
                 };
                 window.KeyReleased += (s, e) =>
                 {
-                    //Console.WriteLine(e.Code.ToString());
                     keyPressed = false;
                     LuaScript.InvokeMethod("KeyUp", new Object[] { e.Code.ToString() });
                 };
                 window.Resized += (s, e) =>
                 {
-                    //Console.WriteLine($"{camera.Center.X}, {camera.Center.Y}");
                     camera = new View(new FloatRect(0, 0, e.Width, e.Height));
                     cameraUI = new View(new FloatRect(0, 0, e.Width, e.Height));
-                    //camera.Size = new Vector2f(e.Width, e.Height);
-                    //camera.Center = new Vector2f(window.Position.X, window.Position.Y);
-                    //window.SetView(camera);
-                    //window.GetView().Viewport = new FloatRect(0, 0, e.Width, e.Height);
                 };
                 window.MouseButtonPressed += (s, e) =>
                 {
@@ -404,18 +229,6 @@ namespace Bubla
                         }
                     }
                 };
-                /*window.MouseMoved += (s, e) =>
-                {
-                    LuaScript.InvokeMethod("OnMouseMove", new Object[] { e.X, e.Y });
-                    foreach (Button button in Button.GetButtons())
-                    {
-                        if (button.Click())
-                        {
-                            LuaScript.InvokeMethod("OnMouseOnButton", new Object[] { button.Name });
-                            break;
-                        }
-                    }
-                };*/
                 window.MouseWheelScrolled += (s, e) =>
                 {
                     LuaScript.InvokeMethod("OnMouseWheelScrolled", new Object[] { e.Delta });
@@ -447,8 +260,6 @@ namespace Bubla
                 }
                 catch { }
                 if(icon != null) window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels);
-                //window.SetFramerateLimit(800);
-                //window.SetFramerateLimit(500);
                 window.SetFramerateLimit(60);
                 SFML.Graphics.Color color = new SFML.Graphics.Color(colorBackgroundRGB[0], colorBackgroundRGB[1], colorBackgroundRGB[2]);
 
@@ -473,20 +284,9 @@ namespace Bubla
                 Timer timerUpdateFps = new Timer(1);
 
                 windowCreate = true;
-                /*Console.WriteLine("hi");
-                GameObject player = GameObject.Get("player");
-                player.AddAnimator("idle", 0.1f, true, new int[] { 0, 0, 0, 1, 0, 2 });
-                player.AddAnimator("run", 0.1f, true, new int[] { 1, 0, 1, 1, 1, 2, 1, 3, 1, 4, 1, 5, 1, 6, 1, 7, 2, 0, 2, 1, 2, 2, 2, 3 });
-                player.PlayAnimation("run");*/
-                //GameObject.Get("player").PlayAnimation("idle");
-
-                /*Achievement.SetSound("yesAchivment", 50);
-                Achievement.Create("as", "cookie", "123456789012123123213132132312132132", "asdas123312312123132321dasdasdasdasdasd");
-                Achievement.Complete("as");*/
 
                 while (window.IsOpen)
                 {
-                    //new Collider(new Vector2f(10, 10), new Vector2f(0, 0), 0, true, 0, "square", false);
                     window.DispatchEvents();
 
                     window.Clear(color);
@@ -494,7 +294,6 @@ namespace Bubla
                     delta = clock.Restart().AsSeconds();
 
                     world.Step(1f, 6, 2);
-                    //Achievement.Get("as").Draw(100, 100, 5);
                     timerUpdateFps.Add(-delta);
                     if (timerUpdateFps.GetFloat() <= 0) {
                         fps = 1.0f / delta;
@@ -503,15 +302,6 @@ namespace Bubla
                     if (debug) window.SetTitle($"{titleGame} | fps: {(int)fps}");
 
                     window.SetView(camera);
-
-                    
-
-                    //SCameraSetPositionSlow(-100, -100, 1000f);
-
-                    //GameObject.Get("obj").LookAt(GameObject.Get("obj2").Pos.X, GameObject.Get("obj").Pos.Y);
-                    //GameObject.Get("obj").LookAt(CursorX(), CursorY());
-                    //GameObject.Get("obj").AddPosition(0, 5);
-                    //GameObject.Get("obj").MoveToPointB(CursorX(), CursorY(), 100);
 
                     // mouse update
                     if (textureCursor != null)
@@ -568,12 +358,7 @@ namespace Bubla
                     foreach (KeyValuePair<string, GameObject> listGameObject in GameObject.GetGameObjects())
                     {
                         GameObject gameObject = listGameObject.Value;
-                        //gameObject.LookAt(CursorX(), CursorY());
-                        //Console.WriteLine($"{CursorX()} {CursorY()}");
-                        //if () Console.WriteLine($"{CursorX()} {CursorY()}");
                         if (gameObject.Point || gameObject.Resorse || !gameObject.GetActive() || gameObject.GetSprite() == null) continue;
-                        //Console.WriteLine(delta);
-                        /*if(!gameObject.Trigger)*/
                         if (Distance(gameObject.Position, camera.Center) < 2000) gameObject.GetSprite().Draw(window, RenderStates.Default);
                         // other check
                         gameObject.MouseOnGameObject = gameObject.GetSprite().GetGlobalBounds().Contains(SCursorX(), SCursorY());
@@ -581,15 +366,10 @@ namespace Bubla
                         // animation frame
                         if (gameObject.AnimNow != null)
                         {
-                            //Console.WriteLine($"anim; {gameObject.AnimNow.FramePos.X}, {gameObject.AnimNow.FramePos.Y}");
-
                             gameObject.UpdateAnim();
                             if (gameObject.AnimNow.NextFrame)
                             {
-                                //Console.WriteLine($"anim; {gameObject.AnimNow.FramePos.X}, {gameObject.AnimNow.FramePos.Y}");
-                                //gameObject.SetPosFrame(gameObject.AnimNow.FramePos.Y, gameObject.AnimNow.FramePos.X);
                                 gameObject.GetSprite().Texture = gameObject.AnimNow.FrameTexture;
-                                
                             }
                         }
                         // collider
@@ -597,20 +377,17 @@ namespace Bubla
                         {
                             float angle = 0;
                             if(!gameObject.Trigger) angle = gameObject.GetCollider().GetBody().GetAngle() * 180.0f / (float)System.Math.PI;
-                            //if (debug)
-                            //{
-                                if (gameObject.GetCollider().Sprite != null) {
-                                    if (!gameObject.Trigger)
-                                    {
-                                        gameObject.GetCollider().Sprite.Position =
-                                        new Vector2f(gameObject.GetCollider().GetBody().GetPosition().X,
-                                        gameObject.GetCollider().GetBody().GetPosition().Y);
+                            if (gameObject.GetCollider().Sprite != null) {
+                                if (!gameObject.Trigger)
+                                {
+                                    gameObject.GetCollider().Sprite.Position =
+                                    new Vector2f(gameObject.GetCollider().GetBody().GetPosition().X,
+                                    gameObject.GetCollider().GetBody().GetPosition().Y);
 
-                                        gameObject.GetCollider().Sprite.Rotation = angle;
-                                    }
-                                    gameObject.GetCollider().Sprite.Draw(window, RenderStates.Default);
+                                    gameObject.GetCollider().Sprite.Rotation = angle;
                                 }
-                            //}
+                                gameObject.GetCollider().Sprite.Draw(window, RenderStates.Default);
+                            }
                             if (!gameObject.Trigger)
                             {
                                 if (!gameObject.FixedRotationTexture) gameObject.GetSprite().Rotation = angle;
@@ -624,7 +401,6 @@ namespace Bubla
                                 GameObject gameObjectColission = listGameObjectCollision.Value;
                                 if (!gameObjectColission.Trigger) continue;
                                 if (!gameObjectColission.HasCollider || gameObject == gameObjectColission) continue;
-                                //if (gameObjectColission.GetCollider().Active) continue;
                                 if (gameObject.GetCollider().Sprite.GetGlobalBounds().Intersects(gameObjectColission.GetCollider().Sprite.GetGlobalBounds()))
                                 {
                                     if (gameObjectColission.IsInCollaider) {
@@ -646,7 +422,6 @@ namespace Bubla
                             {
                                 GameObject gameObjectColission = listGameObjectCollision.Value;
                                 if (!gameObjectColission.HasCollider || gameObject == gameObjectColission) continue;
-                                //if (!gameObjectColission.Trigger) continue;
                                 if (gameObject.GetCollider().Sprite.GetGlobalBounds().Intersects(gameObjectColission.GetCollider().Sprite.GetGlobalBounds()))
                                 {
                                     if (gameObjectColission.IsInCollaider)
@@ -670,117 +445,8 @@ namespace Bubla
                                 }
                             }
                         }
-                            /*if (gameObject.HasCollider)
-                            {
-                                if(debug) gameObject.GetCollider().Sprite.Draw(window, RenderStates.Default);
-                                gameObject.SetPos(gameObject.GetCollider().GetPosition().X, gameObject.GetCollider().GetPosition().Y);
-                                //gameObject.GetPos().X = gameObject.GetCollider().GetPosition().X;
-                                //gameObject.Position.Y = gameObject.GetCollider().GetPosition().Y + 100;
-                                //gameObject.Size = gameObject.GetCollider().GetSize();
-                                // physics
-                                //Console.WriteLine(gameObject.AtGroundY);
-                                if (!gameObject.AtGroundY && gameObject.Mass > 0 && !gameObject.Trigger && gameObject.GetCollider().Active)
-                                {
-                                    gameObject.Dy -= delta * gameObject.Mass;
-                                    //gameObject.impulse(0, gameObject.Dy);
-                                    gameObject.GetCollider().AddPosition(0, -gameObject.Dy);
-                                    //Console.WriteLine(gameObject.Dy);
-                                }
-                                else gameObject.Dy = 0;
-                                if (!gameObject.Trigger) gameObject.GetSprite().Position = new Vector2f(gameObject.GetCollider().GetPosition().X - gameObject.PosAddCollider.X, gameObject.GetCollider().GetPosition().Y + gameObject.PosAddCollider.Y);
-                                // check collision
-                                if (gameObject.Trigger) continue;
-                                foreach (KeyValuePair<string, GameObject> listGameObjectCollision in GameObject.GetGameObjects())
-                                {
-                                    GameObject gameObjectColission = listGameObjectCollision.Value;
-                                    if (!gameObjectColission.HasCollider || gameObject == gameObjectColission) continue;
-                                    if (gameObject.GetCollider().GetGlobalBounds().Intersects(gameObjectColission.GetCollider().GetGlobalBounds()))
-                                    {
-                                        // stop physics
-                                        if (!gameObjectColission.Trigger)
-                                        {
-                                            StopCollider(gameObject, gameObjectColission);
-                                            //gameObject.AtGround = true;
-                                        }
-                                        // start event OnCollision
-                                        foreach (Script script in scripts)
-                                        {
-                                            script.InvokeMethod("OnCollision", new Object[] { gameObject.Name, gameObjectColission.Name, -1*//*id*//* });
-                                        }
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        gameObject.AtGroundXRight = false;
-                                        gameObject.AtGroundXLeft = false;
-                                        gameObject.AtGroundXUp = false;
-                                        *//*if(!gameObject.ImpulseDown)*//* gameObject.AtGroundXDown = false;
-                                    }
-                                }
-                                foreach (KeyValuePair<int, GameObject> listGameObjectCollision in World.GetGameObjects())
-                                {
-                                    GameObject gameObjectColission = listGameObjectCollision.Value;
-                                    if (!gameObjectColission.HasCollider || gameObject == gameObjectColission) continue;
-                                    if (gameObject.GetCollider().GetGlobalBounds().Intersects(gameObjectColission.GetCollider().GetGlobalBounds()))
-                                    {
-                                        // stop physics
-                                        if (!gameObjectColission.Trigger)
-                                        {
-                                            StopCollider(gameObject, gameObjectColission);
-                                            //gameObject.AtGround = true;
-                                        }
-                                        // start event OnCollision
-                                        foreach (Script script in scripts)
-                                        {
-                                            script.InvokeMethod("OnCollision", new Object[] { gameObject.Name, gameObjectColission.Name, listGameObjectCollision.Key });
-                                        }
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        gameObject.AtGroundXRight = false;
-                                        gameObject.AtGroundXLeft = false;
-                                        gameObject.AtGroundXUp = false;
-                                        gameObject.AtGroundXDown = false;
-                                    }
-                                }
-                            }*/
-                        }
-
-                    
-                    /*camera.Move(new Vector2f(0, delta * 15));
-                    window.SetView(camera);
-                    */
+                            
                     window.SetView(cameraUI);
-
-                    // draw avivments
-                    /*if (animAcivmentNow)
-                    {
-                        //Console.WriteLine($"{cameraUI.Size.Y * 2 + backgroundAcivment.Size.Y} < {cameraUI.Size.Y + backgroundAcivment.Position.Y}");
-                        if (cameraUI.Size.Y * 2 - backgroundAcivment.Size.Y / 2 < cameraUI.Size.Y + backgroundAcivment.Position.Y && timerAcivment.GetFloat() > 0)
-                        {
-                            backgroundAcivment.Position = new Vector2f(backgroundAcivment.Position.X, backgroundAcivment.Position.Y - speedAnimationAchivment);
-                            Achievement.AchievementsList[nameObjectAchivment].Sprite.Position = new Vector2f(Achievement.AchievementsList[nameObjectAchivment].Sprite.Position.X, Achievement.AchievementsList[nameObjectAchivment].Sprite.Position.Y - speedAnimationAchivment);
-                            loreAchivment.Position = new Vector2f(loreAchivment.Position.X, loreAchivment.Position.Y - speedAnimationAchivment);
-                            headTextAchivment.Position = new Vector2f(headTextAchivment.Position.X, headTextAchivment.Position.Y - speedAnimationAchivment);
-                        }
-                        else if(timerAcivment.GetFloat() < 0) {
-                            backgroundAcivment.Position = new Vector2f(backgroundAcivment.Position.X, backgroundAcivment.Position.Y + speedAnimationAchivment);
-                            Achievement.AchievementsList[nameObjectAchivment].Sprite.Position = new Vector2f(Achievement.AchievementsList[nameObjectAchivment].Sprite.Position.X, Achievement.AchievementsList[nameObjectAchivment].Sprite.Position.Y + speedAnimationAchivment);
-                            loreAchivment.Position = new Vector2f(loreAchivment.Position.X, backgroundAcivment.Position.Y + speedAnimationAchivment);
-                            headTextAchivment.Position = new Vector2f(headTextAchivment.Position.X, headTextAchivment.Position.Y + speedAnimationAchivment);
-
-                            if (cameraUI.Size.Y * 2 + backgroundAcivment.Size.Y < cameraUI.Size.Y + backgroundAcivment.Position.Y) animAcivmentNow = false;
-                        }
-                        else
-                        {
-                            timerAcivment.Add(-delta);
-                        }
-                        window.Draw(backgroundAcivment);
-                        Achievement.AchievementsList[nameObjectAchivment].Sprite.Draw(window, RenderStates.Default);
-                        loreAchivment.Draw(window, RenderStates.Default);
-                        headTextAchivment.Draw(window, RenderStates.Default);
-                    }*/
 
                     foreach (KeyValuePair<string, Bossbar> bossbar in Bossbar.GetBossbars())
                     {
@@ -830,8 +496,6 @@ namespace Bubla
                     {
                         LuaScript.InvokeMethod("Update", new Object[] { delta });
                     }
-
-                   
 
                     window.Display();
 
@@ -884,149 +548,18 @@ namespace Bubla
             }
         }
 
-        /*private static void StopCollider(GameObject gameObjectA, GameObject gameObjectB)
-        {
-            if (!gameObjectA.GetCollider().Active || !gameObjectB.GetCollider().Active) return;
-
-            float dx = (gameObjectB.GetCollider().GetPosition().X + gameObjectB.GetCollider().GetSize().X / 2) - (gameObjectA.GetCollider().GetPosition().X + gameObjectA.GetCollider().GetSize().X / 2);
-            float dy = (gameObjectB.GetCollider().GetPosition().Y + gameObjectB.GetCollider().GetSize().Y / 2) - (gameObjectA.GetCollider().GetPosition().Y + gameObjectA.GetCollider().GetSize().Y / 2);
-            float dyDown = (gameObjectB.GetCollider().GetPosition().Y - gameObjectB.GetCollider().GetSize().Y / 2) - (gameObjectA.GetCollider().GetPosition().Y - gameObjectA.GetCollider().GetSize().Y / 2);
-            float dxDown = (gameObjectB.GetCollider().GetPosition().X + gameObjectB.GetCollider().GetSize().X / 2) - (gameObjectA.GetCollider().GetPosition().X + gameObjectA.GetCollider().GetSize().X / 2);
-            //Console.WriteLine(gameObjectA.AtGroundY);
-            //bool collisionY = false;
-            if (dy > gameObjectB.GetCollider().GetSize().Y / 1.25f)
-            {
-                //Console.WriteLine("вверх");
-                //body.Position = new Vector2f(body.Position.X, other.Body.Position.Y - other.Body.Size.Y / 2 - body.Size.Y / 2 - 2);
-                if (gameObjectA.Mass != 0 && gameObjectA.Mass != -1 && gameObjectB.Mass != -1)
-                {
-                    gameObjectA.GetCollider().SetPosition(new Vector2f(gameObjectA.GetCollider().GetPosition().X, gameObjectB.GetCollider().GetPosition().Y - gameObjectB.SizeNormal.Y / 2 - gameObjectA.SizeNormal.Y / 2 - 2));
-                    gameObjectA.AtGroundY = true;
-                    gameObjectA.InCollider = true;
-                }
-                else if(gameObjectB.Mass == -1)
-                {
-                    if(gameObjectA.Mass != -1)
-                        //gameObjectA.GetCollider().SetPosition(new Vector2f(gameObjectA.Position.X, gameObjectA.Position.Y - gameObjectA.Size.Y));
-                        gameObjectA.GetCollider().AddPosition(0, -0.5f);
-                    gameObjectA.AtGroundXDown = true;
-                    gameObjectB.AtGroundXDown = true;
-                }
-                gameObjectA.Dy = 0;
-                //collisionY = true;
-                //return;
-            }
-            if (dyDown < gameObjectB.GetCollider().GetSize().Y / 1.25f * -1)
-            {
-                //body.Position = new Vector2f(body.Position.X, other.Body.Position.Y + other.Body.Size.Y / 2 + body.Size.Y / 2 + 2);
-                //Console.WriteLine("низ");
-                //gameObjectA.AtGroundY = true;
-
-                if (gameObjectA.Mass != 0 && gameObjectA.Mass != -1 && gameObjectB.Mass != -1)
-                {
-                    //Console.WriteLine("низ 2");
-                    gameObjectA.GetCollider().SetPosition(new Vector2f(gameObjectA.GetCollider().GetPosition().X, gameObjectB.GetCollider().GetPosition().Y + gameObjectB.SizeNormal.Y / 2 + gameObjectA.SizeNormal.Y / 2 + 2));
-                    gameObjectA.InCollider = true;
-                }
-                else if (gameObjectB.Mass == -1)
-                {
-                    gameObjectA.GetCollider().AddPosition(0, 0.45f);
-                    
-                }
-                gameObjectA.AtGroundXUp = true;
-                gameObjectB.AtGroundXUp = true;
-                *//*else
-                {
-                    gameObjectA.GetCollider().AddPosition(0, -0.45f);
-                    gameObjectA.AtGroundXDown = true;
-                }*//*
-                gameObjectA.Dy = delta * gameObjectA.Mass;
-                gameObjectB.Dy = delta * gameObjectB.Mass;
-                //collisionY = true;
-                //return;
-            }
-            //if(!collisionY)
-            //{
-                //Console.WriteLine(gameObjectA.AtGroundY);
-                //gameObjectA.AtGroundY = false;
-                //gameObjectA.InCollider = false;
-            //}
-
-            if (dx > gameObjectB.GetCollider().GetSize().X / 1.1f)
-            {
-                //body.Position = new Vector2f(other.Body.Position.X - other.Body.Size.X / 2 - body.Size.Y / 2 - 2, body.Position.Y);
-                //Console.WriteLine("право");
-                gameObjectB.AtGroundXLeft = true;
-                if (gameObjectB.Mass != 0 && gameObjectA.Mass != -1 && gameObjectB.Mass != -1)
-                {
-                    gameObjectB.GetCollider().AddPosition(0.45f, 0);
-                }
-                *//*if (gameObjectA.Mass != 0)
-                {
-                    gameObjectA.GetCollider().AddPosition(1f, 0);
-                }*//*
-                //gameObjectB.GetCollider().AddPosition(0.5f, 0);
-                //if (!gameObjectB.AtGroundY) gameObjectB.Dy = 0;
-                //gameObjectB.AddPosition(0.1f, 0);
-                //gameObjectA.impulse(gameObjectA.Dx, 0);
-                //Console.WriteLine("право " + gameObjectA.AtGroundX);
-                //return;
-            }
-            if (dxDown < gameObjectB.GetCollider().GetSize().X / 1.1f * -1)
-            {
-                //body.Position = new Vector2f(other.Body.Position.X + other.Body.Size.X / 2 + body.Size.Y / 2 + 2, body.Position.Y);
-                //Console.WriteLine("лево");
-                //gameObjectB.AtGroundX = true;
-                if(!gameObjectB.AtGroundXDown && !gameObjectB.AtGroundXUp) gameObjectB.AtGroundXRight = true;
-                if (gameObjectB.Mass != 0 && gameObjectA.Mass != -1 && gameObjectB.Mass != -1)
-                {
-                    gameObjectB.GetCollider().AddPosition(-0.45f, 0);
-                }
-                //gameObjectB.AddPosition(-0.1f, 0);
-                //return;
-            }
-        }*/
-
-        /*private static bool SpriteInWindow(Sprite sprite)
-        {
-            Vector2f pos = sprite.Position;
-            Vector2f size = sprite.Scale;
-            Console.WriteLine($"{pos.Y} < {window.GetView().Center}");
-            if(pos.Y < window.GetView().Center.Y)
-            {
-                return false;
-            }
-            return true;
-        }*/
-
         private static void addAllGameObjects(string nameScene)
         {
             XmlDocument xDoc = new XmlDocument();
             string pathXmlBubla = "assets\\infoGame.bubla";
             string pathXml = "assets\\infoGame.xml";
-            //string pathDesXml = "assets\\" + StringToByteToString("infoGame") + "des" + ".bubla";
-
-            //Encryption.Dencryp(pathXml, pathDesXml);
             try
             {
                 xDoc.Load(new StringReader(Encryption.DencrypText(File.ReadAllText(pathXmlBubla))));
             } catch (FileNotFoundException e) { xDoc.Load(new StringReader(Encryption.DencrypText(File.ReadAllText(pathXml)))); }
 
             bool sceneLoad = true;
-
-            //scripts.Clear();
-            //Console.WriteLine($"check scripts");
-            /*List<Script> _scripts = new List<Script>(scripts);
-            foreach(Script script in _scripts)
-            {
-                bool isGlobalScript = false;
-                foreach(string pathGlabalScript in pathsGlobalScript)
-                {
-                    //Console.WriteLine($"script = {script.Path}, pathGlabalScript = {pathGlabalScript}");
-                    if (script.Path.Equals(pathGlabalScript)) isGlobalScript = true;
-                }
-                if (!isGlobalScript) scripts.Remove(script);
-            }*/
+            
             GameObject.Clear();
             Effect.Clear();
             Button.Clear();
@@ -1098,11 +631,8 @@ namespace Bubla
                     if (xnode.Name.Equals("scene") && sceneLoad)
                     {
                         XmlNode xScene = xnode.Attributes.GetNamedItem("name");
-                        //Console.WriteLine("asd " + (nameSceneStart == null));
                         if (!xScene.Value.Equals(nameSceneStart)) continue;
                         
-                        //Console.WriteLine($"new scene {xScene.Value}");
-                        //Dictionary<string, int> listObjects = new Dictionary<string, int>();
                         List<GameObject> listObjects = new List<GameObject>();
 
                         foreach (XmlNode childnodeScene in xnode.ChildNodes)
@@ -1111,9 +641,6 @@ namespace Bubla
                             {
                                 XmlNode attrName = childnodeScene.Attributes.GetNamedItem("name");
                                 XmlNode attrLayer = childnodeScene.Attributes.GetNamedItem("layer");
-                                //Console.WriteLine($"new gameObject {attrName.Value}");
-
-
 
                                 foreach (XmlNode childnode in childnodeScene.ChildNodes)
                                 {
@@ -1143,7 +670,6 @@ namespace Bubla
                                     }
                                     else if (childnode.Name.Equals("nameTexture"))
                                     {
-                                        //Console.WriteLine(childnode.InnerText);
                                         nameTexture = childnode.InnerText + ".bubla";
                                     }
                                     else if (childnode.Name.Equals("point"))
@@ -1235,21 +761,14 @@ namespace Bubla
                                         rowPos = int.Parse(childnode.InnerText);
                                     }
                                 }
-                                //listObjects.Add(attrName.Value, int.Parse(attrLayer.Value));
-                                //Texture textureDebug = null;
-                                //Console.WriteLine("ау2");
                                 try
                                 {
-                                    //textureDebug = new Texture($"assets\\{nameTexture}");
-                                    //Console.WriteLine("ау");
                                     listObjects.Add(
                                     new GameObject(attrName.Value, tag, x, y, new Vector2f(sizeX, sizeY),
                                         new Vector2i(splitSpriteRows, splitSpriteColumns), animation, new Vector2i(rowPos, columnPos), 
                                         nameTexture, point, resourse, collider, splitSprite, splitSpritePixel, trigger,
                                         mass, sizeAddCollider, posAddCollider, int.Parse(attrLayer.Value), fixedRotation, angle, rotate, smooth, repited,
                                         fixedRotationTexture, typeCollider));
-                                    
-                                    //textureDebug.Dispose();
                                 } catch {
                                     listObjects.Add(
                                     new GameObject(attrName.Value, tag, x, y, new Vector2f(sizeX, sizeY), 
@@ -1257,8 +776,6 @@ namespace Bubla
                                         nameTexture.Replace(".bubla", ".png"), point, resourse, collider, splitSprite, splitSpritePixel,
                                         trigger, mass, sizeAddCollider, posAddCollider, int.Parse(attrLayer.Value), fixedRotation, angle, rotate, smooth, repited,
                                         fixedRotationTexture, typeCollider));
-
-                                    //if(textureDebug != null) textureDebug.Dispose();
                                 };
                             }
                             else if (childnodeScene.Name.Equals("sound"))
@@ -1283,11 +800,7 @@ namespace Bubla
                                         volume = float.Parse(childnode.InnerText, CultureInfo.InvariantCulture);
                                     }
                                 }
-                                //try
-                                //{
                                     Sound.GetSounds().Add(attr.Value, new Sound(path, loop, volume));
-                                //}
-                                //catch { Sound.GetSounds().Add(attr.Value, new Sound(path.Replace(".bubla", ".ogg"), loop, volume)); };
                             }
                             else if (childnodeScene.Name.Equals("text"))
                             {
@@ -1489,58 +1002,8 @@ namespace Bubla
                                 }
                                 catch { Button.GetButtons().Add(new Button(attr.Value, path.Replace(".bubla", ".png"), pos, scale)); };
                             }
-                            /*else if (childnodeScene.Name.Equals("script"))
-                            {
-                                XmlNode attr = childnodeScene.Attributes.GetNamedItem("name");
-
-                                string path = "";
-                                bool global = false;
-                                foreach (XmlNode childnode in childnodeScene.ChildNodes)
-                                {
-                                    if (childnode.Name.Equals("path"))
-                                    {
-                                        path = childnode.InnerText;
-                                    }
-                                    if (childnode.Name.Equals("globalScript"))
-                                    {
-                                        global = childnode.InnerText.Equals("true");
-                                    }
-                                }
-
-                                //string text = File.ReadAllText(); заменить ReadAllText на поток чтения
-                                StreamReader fsRead = new StreamReader(File.Open($"assets\\{path}", FileMode.Open));
-
-                                string text = "";
-                                int data;
-                                while ((data = fsRead.Read()) != -1)
-                                {
-                                    text += (char)data;
-                                }
-                                fsRead.Close();
-                                
-                                text = Encryption.DencrypText(text);
-                                //Console.WriteLine(text);
-                                LuaScript luaScript = new LuaScript(text, global);
-
-                                if (global) luaScript.InvokeMethod("OnStartScene", new Object[] { xScene.Value });
-                                *//*if (global)
-                                {
-                                    //Console.WriteLine("global script");
-                                    pathsGlobalScript.Add(path);
-                                    foreach (string pathGlobalScript in pathsGlobalScript)
-                                    {
-                                        if (pathGlobalScript.Equals(path))
-                                        {
-                                            LuaScript.InvokeMethodGlobal("OnStartScene", new Object[] { xScene.Value });
-                                            continue;
-                                        }
-                                    }
-                                }
-
-                                scripts.Add(script);*//*
-                                    //script.InvokeMethod("Start");
-                            }*/
                         }
+                        
                         // add all gameObjects
                         int layer = 0;
                         while(true)
@@ -1575,8 +1038,6 @@ namespace Bubla
                 }
                 if (initObjects) colorBackgroundRGB = new byte[]{r, g, b};
             }
-
-            //File.Delete(pathDesXml);
         }
 
         private static Vector2f operationCamera = new Vector2f(0, 0);
@@ -1607,32 +1068,6 @@ namespace Bubla
             operationCamera.Y += tempY;
             camera.Center = operationCamera;
         }
-
-        /*public static void SCameraSetPositionSlow(float x, float y, float speed) // delete
-        {
-            float distance = (float)Math.Sqrt(Math.Pow(x - camera.Center.X, 2) + Math.Pow(y - camera.Center.Y, 2));
-            Console.WriteLine(distance + " < " + (distance / 2));
-            if (distance < speed) return;
-            float tempX = (x - camera.Center.X) / distance * speed;
-            float tempY = (y - camera.Center.Y) / distance * speed;
-            
-            operationCamera.X += tempX;
-            operationCamera.Y += tempY;
-            camera.Center = operationCamera;
-        }*/
-
-        /*public void CameraSetPositionSlow(float x, float y, float speed)
-        {
-            //float distance = (float)Math.Sqrt(Math.Pow((gameObject.GetSprite().Position.X - sprite.Position.X), 2) + Math.Pow((gameObject.GetSprite().Position.Y - sprite.Position.Y), 2))
-            //float tempX = (x - camera.Center.X) / Distance(x - camera.Center.X, y - camera.Center.Y) * speed;
-            //float tempY = (y - camera.Center.Y) / Distance(x - camera.Center.X, y - camera.Center.Y) * speed;
-            //if (tempX > speed) tempX = speed;
-            //if (tempY > speed) tempY = speed;
-            //AddPosition(tempX, tempY);
-            operationCamera.X = camera.Center.X + x;
-            operationCamera.Y camera.Center.Y + y;
-            camera.Center = operationCamera;
-        }*/
 
         public void CameraUISetPosition(float x, float y)
         {
@@ -1668,11 +1103,9 @@ namespace Bubla
 
         public static void SSetScene(string name)
         {
-            //
             if (!initObjects)
             {
                 nameSceneNext = name;
-                //Console.WriteLine($"initObjects {nameSceneNext}");
                 return;
             }
             if (sceneNext) return;
@@ -1697,11 +1130,6 @@ namespace Bubla
         {
             SSetScene(name);
         }
-
-        /*public static void SetColor(string name)
-        {
-            addAllGameObjects(name);
-        }*/
 
         public static uint WidthScreen
         {
@@ -1795,7 +1223,6 @@ namespace Bubla
 
         public static void EventReadDevice(string readLine)
         {
-            //Console.WriteLine(readLine);
             readDevice.Add(-delta);
             if (readDevice.GetFloat() > 0) return;
             readDevice.Reset();
@@ -1803,24 +1230,12 @@ namespace Bubla
             int[] keys = new int[readLines.Length];
             for(int i = 0; i < keys.Length ;i++)
             {
-                //Console.WriteLine($"i = {i}, длина = {readLine.Length}");
                 keys[i] = int.Parse(readLines[i]);
             }
 
             LuaScript.InvokeMethod("OnDeviceRead", new Object[] { keys });
         }
-
-        /*private static string StringToByteToString(string text)
-        {
-            byte[] nameFileByte = Encoding.UTF8.GetBytes(text);
-            string nameFileFinal = "";
-            foreach (byte _byte in nameFileByte)
-            {
-                nameFileFinal += _byte.ToString();
-            }
-            return nameFileFinal;
-        }*/
-
+            
         public float GetDesktopHeight()
         {
             return SFML.Window.VideoMode.DesktopMode.Height;
@@ -1875,16 +1290,6 @@ namespace Bubla
         {
             return world.Gravity;
         }
-
-        /*public void Draw(GameObject gameObject, float x, float y)
-        {
-            window.Draw(gameObject.GetSprite());
-        }
-
-        public void Draw(GameObject gameObject, float x, float y, float sizeX, float sizeY)
-        {
-
-        }*/
 
         public static void SetColorGameObjects(int r, int g, int b)
         {
