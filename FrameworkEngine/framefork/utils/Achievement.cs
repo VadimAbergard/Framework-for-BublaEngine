@@ -22,9 +22,6 @@ namespace Bubla
         private readonly string lore;
         private readonly Sprite sprite;
 
-        //private static bool complete;
-        //private static string nameComplete;
-
         public Achievement() { }
 
         public Achievement(string name, string nameTexture, string headText, string lore)
@@ -52,7 +49,6 @@ namespace Bubla
         public Sprite Sprite { get => sprite; }
         public string HeadText { get => headText; }
         public string Lore { get => lore; }
-        //public static bool Complet { get => complete; }
         public void Draw(float x, float y, float scale)
         {
             if (Game.AnimAcivmentNow) return;
@@ -73,8 +69,7 @@ namespace Bubla
 
         public static void Complete(string name) 
         {
-            achievements[name].Sprite.Position = new Vector2f(Game.GetCameraUI().Size.X - 370 /*- achievements[name].Sprite.Scale.X*/, Game.GetCameraUI().Size.Y + 30);
-            //achievements[name].Sprite.Position = new Vector2f(100, 100);
+            achievements[name].Sprite.Position = new Vector2f(Game.GetCameraUI().Size.X - 370, Game.GetCameraUI().Size.Y + 30);
             Game.AnimationAchivcment(name, achievements[name].HeadText, achievements[name].Lore);
         }
 
