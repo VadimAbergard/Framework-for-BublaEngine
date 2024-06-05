@@ -12,7 +12,6 @@ namespace Bubla
         private static Thread threadRead = null;
         private static bool connectNow = false;
         private static bool connect = false;
-        //private static bool connectCommand = false;
         private static bool read = false;
         private static string readLine = "";
 
@@ -43,15 +42,12 @@ namespace Bubla
             Console.WriteLine("wait connect");
 
             connectNow = true;
-            //string[] ports = null;
             Thread threadWait = null;
             threadWait = new Thread(() =>
             {
                 while (com.Equals("")) ;
                 threadWait.Join(1000);
                 Game.EventConnectDevice();
-
-                //ports = SerialPort.GetPortNames();
                 serialPort = new SerialPort(com, 9600, Parity.None, 8, StopBits.One);
                 try
                 {
@@ -72,7 +68,6 @@ namespace Bubla
                         try {
                         if (!connect) continue;
                         readLine = serialPort.ReadLine();
-                        //Console.WriteLine(readLine);
                         Game.EventReadDevice(readLine);
                         read = true;
                         }
@@ -96,16 +91,9 @@ namespace Bubla
         public static void Write(string text)
         {
             new Thread(() => {
-                //Console.WriteLine("write 1");
                 while (true) {
                     Console.WriteLine("write " + text);
                     if (!read) continue;
-                    
-                    /*if (!connectCommand)
-                    {
-                        serialPort.Write("connect 1\n");
-                        connectCommand = true;
-                    }
                     else */if (connectNow) serialPort.Write(text + "\n");
                     break;
                 }
