@@ -81,11 +81,5 @@ namespace Bubla
         {
             System.Diagnostics.Process.Start(url);
         }
-
-        /*public static void OpenFile(string path)
-        {
-            File.Open(path, FileMode.Open).Close();
-        }*/
-
     }
 }
