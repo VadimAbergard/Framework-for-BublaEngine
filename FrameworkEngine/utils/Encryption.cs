@@ -12,7 +12,6 @@ namespace MyFramework.utils
     {
         private static string[] randomSymbol = { "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j",
             "k", "l", "z", "x", "c", "v", "b", "n", "m"};
-        //private static string[] randomSymbolTwo = { "◄", "Ω", "இ", "▻", "◘", "♇", "︶", "〡", "░", "♡", "~" };
 
         public static void Encod(string encodingFile, string endFile)
         {
@@ -25,11 +24,6 @@ namespace MyFramework.utils
             Random random = new Random();
             while ((data = fsRead.ReadByte()) != -1)
             {
-                /*if (scip && scipSymbol < 3)
-                {
-                    scipSymbol++;
-                    continue;
-                }*/
                 if ((char)(byte)data == ' ') data = '`';
                 textRead += (char)(byte)data + randomSymbol[random.Next(randomSymbol.Length)];
             }
@@ -70,9 +64,6 @@ namespace MyFramework.utils
             fsRead.Close();
             textRead = textRead.Replace("`", " ");
 
-            //Console.WriteLine(textRead);
-
-
             FileStream fsWrite = new FileStream(endFile, FileMode.Create);
 
             byte[] bytesWrite = Encoding.UTF8.GetBytes(textRead);
@@ -83,7 +74,6 @@ namespace MyFramework.utils
                 fsWrite.WriteByte(bytesWrite[i]);
             }
             fsWrite.Close();
-            //Console.WriteLine(finalText);
         }
 
         public static string DencrypText(string text)
@@ -103,26 +93,6 @@ namespace MyFramework.utils
             textRead = textRead.Replace("`", " ");
             return textRead;
         }
-
-        /*public static string DencrypTextD(string text)
-        {
-            char[] chars = text.ToCharArray();
-
-            string textRead = "";
-            bool spaceSymbol = false;
-            foreach (char _char in chars)
-            {
-                if (!spaceSymbol)
-                {
-                    textRead += (char)_char;
-                    Console.Write((char)_char);
-                    Thread.Sleep(10);
-                }
-                spaceSymbol = !spaceSymbol;
-            }
-            textRead = textRead.Replace("`", " ");
-            return textRead;
-        }*/
 
         public static string EncodText(string text)
         {
