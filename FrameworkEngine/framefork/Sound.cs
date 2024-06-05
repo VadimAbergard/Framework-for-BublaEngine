@@ -42,7 +42,6 @@ namespace Bubla
                 sound.Pause();
             }
             catch { }
-            //Console.WriteLine($"loop {isLoop}");
         }
 
         public void LoadNewFile(string name, string fileName, bool fullPath)
@@ -57,14 +56,8 @@ namespace Bubla
                 sounds[name].sound.Dispose();
             }
             sounds[name].sound = new SFML.Audio.Music(fullPath ? fileName : $"assets\\{fileName}.bubla");
-            //try
-            //{
-            //    sounds[name].sound = new SFML.Audio.Music($"assets\\{fileName}.ogg");
-            //}
-            //catch { sounds[name].sound = new SFML.Audio.Music($"assets\\{fileName}.bubla"); }
             sounds[name].sound.Volume = sounds[name].VolumeDefault;
             sounds[name].sound.Loop = sounds[name].IsLoopDefault;
-            //Console.WriteLine($"loop {sounds[name].IsLoop}");
         }
 
         public void Play(string name)
@@ -219,11 +212,6 @@ namespace Bubla
             set { timeAttenuation = value; }
         }
 
-        /*public bool Playing
-        {
-            get {  }
-        }*/
-
         public static Dictionary<string, Sound> GetSounds()
         {
             return sounds;
@@ -231,17 +219,8 @@ namespace Bubla
 
         private static void PlaySound(Sound sound)
         {
-            //try
-            //{
             sound.sound.Volume = sound.defaultVolume;
             sound.sound.Play();
-            //}
-            /*catch {
-                sound.sound = new SFML.Audio.Music(sound.path.Replace(".ogg", ".bubla"));
-                sound.sound.Loop = sound.IsLoop;
-                sound.sound.Volume = sound.Volume;
-                sound.sound.Play();
-            }*/
         }
 
         public static void Clear()
@@ -257,7 +236,6 @@ namespace Bubla
 
         private static void PlaySound(Sound sound, float volume, float timeAddition = 0)
         {
-            //try {
             if (timeAddition < 0) timeAddition = 0;
             if (timeAddition != 0) {
                 Console.WriteLine("asdasdassda");
@@ -271,13 +249,6 @@ namespace Bubla
             sound.defaultVolume = volume;
             
             sound.sound.Play();
-            //}
-            /*catch {
-                sound.sound = new SFML.Audio.Music(sound.path.Replace(".ogg", ".bubla"));
-                sound.sound.Loop = sound.IsLoop;
-                sound.sound.Volume = volume;
-                sound.sound.Play();
-            }*/
         }
     }
 }
