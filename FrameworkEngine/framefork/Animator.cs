@@ -11,11 +11,9 @@ namespace Bubla
 {
     public class Animator
     {
-        //private Vector2i[] posFrames;
         private Timer timer;
         private int maxLengthFrame;
         private int frame;
-        //private Vector2i framePos;
         private Texture[] frames;
 
         private bool loop;
@@ -31,18 +29,15 @@ namespace Bubla
             for (int i = 0; i < frames.Length;i += 2)
             {
                 frames[j] = new Vector2i(posFrame[i], posFrame[i + 1]);
-                //Console.WriteLine(nameTexture + ", " +splitSpriteSizeTexture.X * posFrame[i + 1] + ", " + (splitSpriteSizeTexture.Y * posFrame[i]));
                 framesTexture[j] = new Texture("assets\\" + nameTexture, new IntRect(splitSpriteSizeTexture.X * posFrame[i + 1], splitSpriteSizeTexture.Y * posFrame[i], splitSpriteSizeTexture.X, splitSpriteSizeTexture.Y));
                 framesTexture[j].Smooth = smoothTexture;
                 j++;
 
             }
-            //this.posFrames = frames;
             this.frames = framesTexture;
             
             this.timer = new Timer(speed);
             this.maxLengthFrame = j;
-            //this.framePos = new Vector2i();
             this.loop = loop;
         }
 
@@ -51,11 +46,9 @@ namespace Bubla
             if (stop) return;
             nextFrame = false;
 
-            //Console.WriteLine("test 0," + frame);
             timer.Add(-Game.SDelta());
             if(timer.GetFloat() < 0)
             {
-                //Console.WriteLine("test 1," + frame);
                 foreach(int pauseFrame in futureFrames)
                 {
                     if (frame == pauseFrame)
