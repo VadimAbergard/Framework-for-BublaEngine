@@ -18,7 +18,6 @@ namespace Bubla
 {
     public class GameObject
     {
-        //private static List<GameObject> gameObjects = new List<GameObject>();
         private static Dictionary<string, GameObject> gameObjects = new Dictionary<string, GameObject>();
 
         private Dictionary<string, Animator> animation = new Dictionary<string, Animator>();
@@ -30,7 +29,6 @@ namespace Bubla
         private string name;
         private string tag;
         private float rotate;
-        //private int id; // only for object world
         private string nameTexture;
         private bool point;
         private bool mouseOnGameObject;
@@ -54,18 +52,6 @@ namespace Bubla
         private float angle;
         private float mass;
         private string typeCollider;
-
-        /*private float dXRotate;
-        private float dYRotate;*/
-
-        /*private bool atGroundXRight;
-        private bool atGroundXLeft;
-        private bool atGroundXUp;
-        private bool atGroundXDown;
-        private bool impulseDown;
-        private bool atGroundY;
-        private bool inCollider;
-        private float dy;*/
 
         // for clone
         private string animationText;
@@ -114,17 +100,12 @@ namespace Bubla
             this.hasCollider = collider;
             this.sizeAddCollider = sizeAddCollider;
             this.posAddCollider = posAddCollider;
-            //this.physics = physics;
             this.trigger = trigger;
-            //Console.WriteLine("trigger: " + trigger);
             this.mass = mass;
             this.active = true;
 
-            //this.splitSprite = splitSprite;
-            //this.splitSpriteSize = splitSpriteSize;
             if (nameTexture == "") return;
             sprite = new Sprite();
-            //sprite.TextureRect = new IntRect();
             if (!splitSprite) sprite.Texture = new Texture("assets\\" + nameTexture);
             else
             {
@@ -136,7 +117,6 @@ namespace Bubla
                 else
                 {
                     this.defaultSizeTexture = new Texture("assets\\" + nameTexture).Size;
-                    //Console.WriteLine((int)defaultSizeTexture.X + ", " + splitSpriteSize.X + "; " + (int)defaultSizeTexture.Y + ", " + splitSpriteSize.Y);
                     this.splitSpriteSizeTexture = new Vector2i((int)defaultSizeTexture.X / splitSpriteSize.X, (int)defaultSizeTexture.Y / splitSpriteSize.Y);
                     sprite.Texture = new Texture("assets\\" + nameTexture, new IntRect(splitSpriteSizeTexture.X * splitSpritePos.X, splitSpriteSizeTexture.Y * splitSpritePos.Y, splitSpriteSizeTexture.X, splitSpriteSizeTexture.Y));
                 }
@@ -152,7 +132,6 @@ namespace Bubla
                 sprite.TextureRect = new IntRect(0, 0, (int)size.X, (int)size.Y);
                 sprite.Origin = new Vector2f(size.X / 2f, size.Y / 2f);
                 sprite.Texture.Repeated = true;
-                //sprite.Scale = this.size;
             }
             Vector2f position = new Vector2f(x + sprite.Texture.Size.X * sprite.Scale.X / 2f + (repited ? size.X / 2f : 0), y + sprite.Texture.Size.Y * sprite.Scale.Y / 2f + (repited ? size.Y / 2f : 0));
             sprite.Position = position;
@@ -160,56 +139,20 @@ namespace Bubla
             sprite.Rotation = rotate;
             if (smooth) sprite.Texture.Smooth = true;
 
-            /*if (!trigger) {
-                sprite = new Sprite();
-                if (!splitSprite) sprite.Texture = new Texture("assets\\" + nameTexture);
-                else
-                {
-                    this.defaultSizeTexture = new Texture("assets\\" + nameTexture).Size;
-                    this.splitSpriteSizeTexture = new Vector2i((int)defaultSizeTexture.X / splitSpriteSize.X, (int)defaultSizeTexture.Y / splitSpriteSize.Y);
-                    sprite.Texture = new Texture("assets\\" + nameTexture, new IntRect(splitSpriteSizeTexture.X * splitSpritePos.X, splitSpriteSizeTexture.Y * splitSpritePos.Y, splitSpriteSizeTexture.X, splitSpriteSizeTexture.Y));
-                }
-                sprite.Origin = new Vector2f(sprite.Texture.Size.X / 2f, sprite.Texture.Size.Y / 2f);
-                this.size = new Vector2f(size.X / sprite.Texture.Size.X, size.Y / sprite.Texture.Size.Y);
-                sprite.Scale = this.size;
-                Vector2f position = new Vector2f(x + sprite.Texture.Size.X * sprite.Scale.X / 2f, y + sprite.Texture.Size.Y * sprite.Scale.Y / 2f);
-                sprite.Position = position;
-            } else
-            {
-                //Texture texture = new Texture("assets\\" + nameTexture);
-                sprite = new Sprite();
-                sprite.Texture = new Texture("assets\\" + nameTexture);
-
-                //sprite.Origin = new Vector2f(sprite.Texture.Size.X / 2f, sprite.Texture.Size.Y / 2f);
-                this.size = new Vector2f(size.X / sprite.Texture.Size.X * 10, size.Y / sprite.Texture.Size.Y);
-                sprite.Scale = this.size;
-                Vector2f position = new Vector2f(x - sprite.Texture.Size.X * sprite.Scale.X / 2f, y - sprite.Texture.Size.Y * sprite.Scale.Y / 2f);
-                sprite.Position = position;
-                *//*const float pixelSize = 0.26f;
-                this.size = new Vector2f(size.X * pixelSize, size.Y * pixelSize);
-                Vector2f position = new Vector2f(x + pixelSize * this.size.X / 2f, y + pixelSize * this.size.Y / 2f);*//*
-                //texture.Dispose();
-            }*/
-
             if (animation != "")
             {
-                //Console.WriteLine(animation);
                 animation = animation.Remove(animation.Length - 1);
                 animation = animation.Replace(" ", "");
                 string[] textSplit = animation.Split(';');
                 foreach (string text in textSplit)
                 {
                     string[] splitText = text.Split(',');
-                    //Console.WriteLine(splitText[0]);
-                    //Console.WriteLine(float.Parse(splitText[1], CultureInfo.InvariantCulture));
-                    //Console.WriteLine(splitText[2]);
                     List<int> frames = new List<int>();
                     for (int i = 0; ; i++)
                     {
                         try
                         {
                             frames.Add(int.Parse(splitText[3 + i]));
-                            //Console.WriteLine(int.Parse(splitText[3 + i]));
                         } catch { break; }
                     }
                     int[] framesArray = new int[frames.Count];
@@ -225,31 +168,13 @@ namespace Bubla
 
             if (collider)
             {
-                //float _angle = angle * 180.0f / (float)System.Math.PI;
                 float _angle = angle / 10f;
-                //Console.WriteLine("angle " + _angle);
                 this.collider = new Collider(new Vector2f(size.X + sizeAddCollider.X, size.Y + sizeAddCollider.Y),
-                    new Vector2f(x + /*sizeAddCollider.X +*/ size.X / 2 + posAddCollider.X, y /*+ sizeAddCollider.Y*/ + size.Y / 2 - posAddCollider.Y), mass, fixedRotation, _angle, typeCollider, trigger);
+                    new Vector2f(x + size.X / 2 + posAddCollider.X, y + size.Y / 2 - posAddCollider.Y), mass, fixedRotation, _angle, typeCollider, trigger);
                 if(!fixedRotationTexture) sprite.Rotation = _angle;
             }
-            //sprite.Color = new Color((byte)0, (byte)0, (byte)0);
-            /*
-            sprite.Scale = new Vector2f(10, 10);
-            */
-            //if (!clone) gameObjects.Add(name, this);
         }
 
-        /*public static GameObject Get(string name)
-        {
-            foreach(GameObject gameObject in gameObjects)
-            {
-                if(gameObject.Name.Equals(name))
-                {
-                    return gameObject;
-                }
-            }
-            return null;
-        }*/
         public GameObject Get(string name)
         {
             return gameObjects[name];
@@ -297,15 +222,10 @@ namespace Bubla
             set {
                 sprite.Position = value;
                 pos = new Position(value.X, value.Y);
-                //Console.WriteLine(pos.X);
                 if (collider != null) collider.SetPosition(new Vector2f(value.X + (trigger ? size.X / 2f : 0), value.Y + (trigger ? size.Y / 2f : 0)));
             }
         }
 
-        /*public Position GetPosistion()
-        {
-            return pos;
-        }*/
         public float GetPositionX()
         {
             return pos.X;
@@ -343,13 +263,9 @@ namespace Bubla
 
         public void LookAt(float x, float y)
         {
-            //if (repited) return;  - window.Position.X, SFML.Window.Mouse.GetPosition().Y - window.Position.Y
-            //float dx = SFML.Window.Mouse.GetPosition().X - sprite.Position.X + this.size.X / 2 - Game.GetWindow().Position.X;
-            //float dy = SFML.Window.Mouse.GetPosition().Y - sprite.Position.Y + this.size.Y / 2 - Game.GetWindow().Position.Y;/*
             double dx = x - Position.X;
             double dy = y - Position.Y;
             float rotate = (float)(Math.Atan2(dy, dx) * 180 / Math.PI);
-            //Console.WriteLine(rotate);
             sprite.Rotation = rotate;
         }
 
@@ -368,18 +284,9 @@ namespace Bubla
             float tempX = ((x - sprite.Position.X) / Distance(x - sprite.Position.X, y - sprite.Position.Y)) * speed;
             float tempY = ((y - sprite.Position.Y) / Distance(x - sprite.Position.X, y - sprite.Position.Y)) * speed;
             if (tempX > speed) tempX = speed;
-            //else if(tempX < speed / 4f) tempX = speed / 2f;
             if (tempY > speed) tempY = speed;
-            //else if (tempY < speed / 4f) tempY = speed / 2f;
-            //Console.WriteLine(tempX);
             AddPosition(tempX , tempY);
         }
-
-        /*public float Rotation
-        {
-            get { return sprite.Rotation; }
-            set { sprite.Rotation = value; }
-        }*/
 
         public bool GetActive()
         {
@@ -402,16 +309,6 @@ namespace Bubla
             get { return fixedRotationTexture; }
             set { fixedRotationTexture = value; } 
         }
-
-        /*public Vector2f Size
-        {
-            get { return sprite.Scale; }
-            set {
-                this.sizeNormal = value;
-                this.size = new Vector2f(value.X / sprite.Texture.Size.X, value.Y / sprite.Texture.Size.Y);
-                sprite.Scale = this.size;
-            }
-        }*/
 
         public void AddPositionTexture(float x, float y)
         {
@@ -438,18 +335,6 @@ namespace Bubla
             get { return posAddCollider; }
         }
 
-        /*public float Dy
-        {
-            get { return dy; }
-            set { dy = value; }
-        }*/
-
-        /*public int Id
-        {
-            get { return id; }
-            set { id = value; }
-        }*/
-
         public bool Resorse
         {
             get { return resorse; }
@@ -461,22 +346,10 @@ namespace Bubla
             get { return nameTexture; }
         }
 
-        /*public void AddDy(float value)
-        {
-            dy += value;
-        }*/
-
         public void SetPosFrame(int row, int column)
         {
             sprite.Texture.Dispose();
             sprite.Texture = new Texture("assets\\" + nameTexture, new IntRect(splitSpriteSizeTexture.X * column, splitSpriteSizeTexture.Y * row, splitSpriteSizeTexture.X, splitSpriteSizeTexture.Y));
-            //sprite.TextureRect = new IntRect(splitSpriteSizeTexture.X * row, splitSpriteSizeTexture.Y * column, splitSpriteSizeTexture.X, splitSpriteSizeTexture.Y);
-            /*IntRect intRect = sprite.TextureRect;
-            intRect.Top = splitSpriteSizeTexture.Y * column;
-            intRect.Left = splitSpriteSizeTexture.X * row;
-            intRect.Width = splitSpriteSizeTexture.X;
-            intRect.Height = splitSpriteSizeTexture.Y;
-            sprite.TextureRect = intRect;*/
         }
 
         public void SetPosFramePixel(int x, int y, int sizeX, int sizeY)
@@ -487,19 +360,16 @@ namespace Bubla
 
         public void AddAnimator(string nameAnimation, float speed, bool loop, params int[] framePos)
         {
-            //Console.WriteLine("AddAnimator");
             animation.Add(nameAnimation, new Animator(framePos, speed, loop, nameTexture, splitSpriteSizeTexture, smooth));
         }
 
         public void PlayAnimation(string nameAnimation)
         {
-            //Console.WriteLine("PlayAnimator");
             if (nameAnimationNow.Equals(nameAnimation))
             {
                 animNow.PauseAnim = false;
                 return;
             }
-            //if (animNow != null) animNow.Dispose();
 
             animNow = animation[nameAnimation];
             nameAnimationNow = nameAnimation;
@@ -580,17 +450,6 @@ namespace Bubla
             get { return animNow; }
         }
 
-        /*public float Dx
-        {
-            get { return dx; }
-            set { dx = value; }
-        }
-
-        public void AddDx(float value)
-        {
-            dx += value;
-        }*/
-
         public bool Point
         {
             get { return point; }
@@ -612,48 +471,6 @@ namespace Bubla
             get { return splitSpritePixel; }
             set { splitSpritePixel = value; }
         }
-
-        /*public bool AtGroundXRight
-        {
-            get { return atGroundXRight; }
-            set { atGroundXRight = value; }
-        }
-
-        public bool InCollider
-        {
-            get { return inCollider; }
-            set { inCollider = value; }
-        }
-
-        public bool AtGroundXLeft
-        {
-            get { return atGroundXLeft; }
-            set { atGroundXLeft = value; }
-        }
-
-        public bool AtGroundXUp
-        {
-            get { return atGroundXUp; }
-            set { atGroundXUp = value; }
-        }
-
-        public bool AtGroundXDown
-        {
-            get { return atGroundXDown; }
-            set { atGroundXDown = value; }
-        }
-
-        public bool ImpulseDown
-        {
-            get { return impulseDown; }
-            set { impulseDown = value; }
-        }
-
-        public bool AtGroundY
-        {
-            get { return atGroundY; }
-            set { atGroundY = value; }
-        }*/
 
         public float GetMass()
         {
@@ -715,14 +532,6 @@ namespace Bubla
                 fixedRotationTexture, typeCollider));
         }
 
-        /*public void Clone(string name, float x, float y, float sizeX, float sizeY) // for lua script
-        {
-            gameObjects.Add(name, new GameObject(name, tag, x, y, new Vector2f(sizeX, sizeY),
-                splitSpriteSize, animationText, splitSpritePos, nameTexture, point, resorse, colliderClone,
-                splitSprite, splitSpritePixel, trigger, mass, sizeAddCollider, posAddCollider, layer, fixedRotation, angle, rotate, smooth, repited,
-                fixedRotationTexture, typeCollider));
-        }*/
-
         public GameObject Clone(Vector2f newPosition, string newTag = "", float sizeX = -1, float sizeY = -1)
         {
             return new GameObject(name, newTag == "" ? tag : newTag, newPosition.X, newPosition.Y, sizeX == -1 && sizeY == -1 ? sizeNormal : new Vector2f(sizeX, sizeY),
@@ -748,60 +557,14 @@ namespace Bubla
 
         public void ApplyImpulse(float x, float y)
         {
-            //Console.WriteLine("impulse");
             collider.ApplyImpulse(x, y);
         }
 
         public void StopCollider()
         {
-            //Console.WriteLine("impulse");
             collider.Stop();
         }
-        /*public void impulse(float x, float y)
-        {
-            if (!active) return;
-            if (mass != 0) {
-                atGroundY = false;
-                if (y != 0)
-                {
-                    inCollider = false;
-                    dy = y;
-                    //collider.AddPosition(0, (y + dy) * -1 * Game.Delta * 500);
-                }
-                if(!atGroundXLeft)
-                {
-                    collider.AddPosition((x < 0 ? 1 : 0) * (x * Game.Delta * 500), 0);
-                }
-                if(!atGroundXRight)
-                {
-                    collider.AddPosition((x > 0 ? 1 : 0) * (x * Game.Delta * 500), 0);
-                }
-                // y
-
-            } else
-            {
-                impulseDown = false;
-                if(y < 0) { impulseDown = true; }
-                if (!atGroundXLeft)
-                {
-                    collider.AddPosition((x < 0 ? 1 : 0) * (x * Game.Delta * 500), 0);
-                }
-                if (!atGroundXRight)
-                {
-                    collider.AddPosition((x > 0 ? 1 : 0) * (x * Game.Delta * 500), 0);
-                }
-
-                if (!atGroundXDown)
-                {
-                    collider.AddPosition(0, (y < 0 ? 1 : 0) * (y * Game.Delta * 500) * -1);
-                }
-                if (!atGroundXUp)
-                {
-                    collider.AddPosition(0, (y > 0 ? 1 : 0) * (y * Game.Delta * 500) * -1);
-                }
-                //collider.AddPosition(0, y * -1 * Game.Delta * 500);
-            }
-        }*/
+        
         public void Dispose()
         {
             sprite.Dispose();
@@ -813,7 +576,6 @@ namespace Bubla
             foreach(KeyValuePair<string, GameObject> listGameObject in gameObjects)
             {
                 GameObject gameObject = listGameObject.Value;
-                //if(gameObject.GetCollider() != null) gameObject.GetCollider().Dispose();
                 gameObject.Dispose();
             }
             gameObjects.Clear();
