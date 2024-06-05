@@ -45,19 +45,8 @@ namespace Bubla
             this.clone = clone;
             this.typeEffect = typeEffect;
             if(cloneSpeed != -1) speed = cloneSpeed;
-            //Console.WriteLine(cloneSpeed);
-
-            /*sprite = new Sprite();
-            sprite.Texture = new Texture("assets\\" + path);
-            sprite.Origin = new Vector2f(sprite.Texture.Size.X / 2f, sprite.Texture.Size.Y / 2f);
-            Vector2f scaleSprite = new Vector2f(size / sprite.Texture.Size.X, size / sprite.Texture.Size.Y);
-            sprite.Scale = scaleSprite;
-            position = new Vector2f(position.X + sprite.Texture.Size.X * sprite.Scale.X / 2f, position.Y + sprite.Texture.Size.Y * sprite.Scale.Y / 2f);
-            sprite.Position = position;*/
 
             if(!clone) effects.Add(name, this);
-            // test
-            //Play(3);
         }
 
         public void Play(int speed = 1, Position pos = null)
