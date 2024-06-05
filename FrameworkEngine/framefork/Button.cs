@@ -52,18 +52,6 @@ namespace Bubla
 
         public bool Click()
         {
-            //if (!this.use) return false;
-            //float mouseX = Game.GetMousePosition().X /*+ (Game.Debug ? 9 : -9)*/;
-            //float mouseY = Game.GetMousePosition().Y /*+ (Game.Debug ? 37 : -37)*/;
-            //Console.WriteLine(mouseX + " > " + (this.position.X + this.scale.X));
-            //Console.WriteLine((this.position.Y) + " > " + mouseY);
-            //if (mouseX > this.position.X && mouseX < this.position.X + this.scale.X /** (Game.Debug ? 3 : 1)*/ &&
-            //        this.position.Y < mouseY && this.position.Y + this.scale.Y /** (Game.Debug ? 3 : 1)*/ > mouseY)
-            //{
-                //if (sound != null) sound.Play();
-                //Console.WriteLine("asd");
-            //    return true;
-            //}
             return sprite.GetGlobalBounds().Contains(Game.SCursorX(), Game.SCursorY()) && active;
         }
 
