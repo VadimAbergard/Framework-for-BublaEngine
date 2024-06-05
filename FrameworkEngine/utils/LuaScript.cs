@@ -15,9 +15,7 @@ namespace FrameworkEngine.utils
 {
     internal class LuaScript
     {
-        //private static List<LuaScript> luaScripts = new List<LuaScript>();
         private static Lua lua = null;
-        //private bool global;
 
         public static void Create(string nameScene) {
             if (!File.Exists($"assets\\mainScript{nameScene}.bubla")) return;
@@ -92,47 +90,9 @@ namespace FrameworkEngine.utils
             return objects;
         }
 
-        /*public object[] InvokeMethod(string nameMethod, object[] args = null)
-        {
-            object[] objects = null;
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            LuaFunction func = lua[nameMethod] as LuaFunction;
-            if (func != null)
-            {
-                if (args == null) objects = func.Call();
-                else objects = func.Call(args);
-                func.Dispose();
-            }
-            Console.ForegroundColor = ConsoleColor.White;
-
-            return objects;
-        }*/
-
-        /*public static void InvokeMethodGlobal(string nameMethod, object[] args)
-        {
-            foreach (LuaScript luaScript in luaScripts) {
-                if (!luaScript.global) continue;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                LuaFunction func = luaScript.lua[nameMethod] as LuaFunction;
-                if (func != null)
-                {
-                    if (args == null) func.Call();
-                    else func.Call(args);
-                    func.Dispose();
-                }
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-        }*/
-
         public static void Dispose()
         {
             if(lua != null) lua.Dispose();
         }
-
-        /*public static List<LuaScript> GetLuaScripts()
-        {
-            return luaScripts;
-        }*/
     }
 }
