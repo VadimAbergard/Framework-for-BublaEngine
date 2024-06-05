@@ -10,9 +10,7 @@ namespace Bubla
 {
     public class Text
     {
-        //private static List<Text> texts = new List<Text>();
         private static Dictionary<string, Text> texts = new Dictionary<string, Text>();
-        //private static List<SFML.Graphics.Text> textsInGame = new List<SFML.Graphics.Text>();
 
         private SFML.Graphics.Text sfmlText;
         private string name;
@@ -32,9 +30,6 @@ namespace Bubla
             this.text = text;
             this.position = position;
             this.active = true;
-            //int addSize = (int)(size / 8);
-            //size = (uint)(size + addSize);
-            //position = new Vector2f(position.X + size / 4f, position.Y + size / 4f);
 
             SFML.Graphics.Text textInGame = new SFML.Graphics.Text();
             try
@@ -45,7 +40,6 @@ namespace Bubla
             textInGame.CharacterSize = size;
             textInGame.Position = position;
             sfmlText = textInGame;
-            //textInGame.Color
             texts.Add(name, this);
         }
 
@@ -126,20 +120,14 @@ namespace Bubla
                 byte[] bytes = Encoding.UTF8.GetBytes(value);
                 string textUtf8 = Encoding.UTF8.GetString(bytes);
                 Console.OutputEncoding = Encoding.UTF8;
-                //Console.WriteLine("value = " + value);
-                //Console.WriteLine("value2 = " + textUtf8);
                 string textFinal = "";
                 string check = "";
                 foreach(char _char in textUtf8.ToCharArray())
                 {
-                    //Console.WriteLine(_char);
-                    //         ç è é ê ë ì í î ï ð ñ ò ó ô õ ö ÷ ø ù ü û ú ý þ ÿ
-                    //                                 
                     check = Utf8ToRussianSmallWords(_char);
                     if(check == "") check = Utf8ToRussianBigWords(_char);
                     if(check == "") textFinal += _char;
                     else textFinal += check;
-                    //Console.WriteLine($"_char == {_char} = {_char == 'ò'}");
                 }
                 sfmlText.DisplayedString = textFinal;
                 text = textFinal;
@@ -192,29 +180,6 @@ namespace Bubla
             get { return size; }
             set { size = value; }
         }
-        /*public string Name
-        {
-            get { return name; }
-        }*/
-
-        /*public string FullText
-        {
-            get { return text; }
-            set { 
-                text = value;
-
-            }
-        }
-
-        public float Size
-        {
-            get { return size; }
-        }
-
-        public Vector2f Position
-        {
-            get { return position; }
-        }*/
 
         public static Dictionary<string, Text> GetTexts()
         {
@@ -422,8 +387,6 @@ namespace Bubla
                 default:
                     return "";
             }
-
-            
         }
     }
 }
