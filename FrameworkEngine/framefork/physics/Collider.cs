@@ -57,10 +57,8 @@ namespace MyFramework.framefork.physics
                 if (shape != null) body.CreateShape(shape);
                 else if (shapeCircle != null) body.CreateShape(shapeCircle);
                 if (mass > 0) body.SetMassFromShapes();
-                //Thread.Sleep(10);
             }
 
-            //if (!Game.Debug) return;
             switch(typeCollider)
             {
                 case "circle":
@@ -166,7 +164,6 @@ namespace MyFramework.framefork.physics
         {
             if(bodyDebugSquare != null) bodyDebugSquare.Dispose();
             if(bodyDebugCircle != null) bodyDebugCircle.Dispose();
-            //Console.WriteLine("asd " + (body.GetShapeList() == null));
             if (body != null) {
                 if (body.GetShapeList() != null) body.DestroyShape(body.GetShapeList());
                 body.Dispose();
