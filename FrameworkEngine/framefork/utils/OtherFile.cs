@@ -20,7 +20,6 @@ namespace Bubla
             {
                 if (!Directory.Exists("files")) Directory.CreateDirectory("files");
                 string finalNameFile = AppDomain.CurrentDomain.BaseDirectory + "files\\" + new FileInfo(text).Name;
-                //
                 if (File.Exists(finalNameFile)) File.Delete(finalNameFile);
                 File.Copy(text, finalNameFile);
             }
@@ -69,7 +68,6 @@ namespace Bubla
             myProcess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             myProcess.StartInfo.CreateNoWindow = true;
             myProcess.StartInfo.CreateNoWindow = true;
-            //myProcess.StartInfo.Arguments = textWrite;
             myProcess.Start();
             myProcess.WaitForExit();
         }
