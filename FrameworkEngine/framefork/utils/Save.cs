@@ -10,13 +10,11 @@ namespace Bubla
 {
     public class Save
     {
-        //private const string saveFile = "assets\\save.bubla";
         private static string saveFile = null;
 
         public static void Init()
         {
             string nameGame = Game.GetTitle().Replace(' ', '_');
-            //nameGame = nameGame == null ? "bublaGameWithoutName" : nameGame;
             string pathLaba1 = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\" + nameGame;
             if(!Directory.Exists(pathLaba1)) Directory.CreateDirectory(pathLaba1);
             saveFile = $"{pathLaba1}\\save.bubla";
@@ -44,13 +42,11 @@ namespace Bubla
             while ((data = fileStream.ReadByte()) != -1)
             {
                 textRead += (char)data;
-                //Console.WriteLine($"{textRead}, {(char)(byte)data == '\n'}");
             }
             string textWrite = "";
             if (textRead != "")
             {
                 textRead = Encryption.DencrypText(textRead);
-                //Console.WriteLine(textRead);
                 // split text
                 textRead = textRead.Remove(textRead.Length - 1);
                 string[] textSplit = textRead.Split(';');
@@ -106,7 +102,6 @@ namespace Bubla
                 return;
             }
             textRead = Encryption.DencrypText(textRead);
-            //Console.WriteLine(textRead);
             // split text
             textRead = textRead.Remove(textRead.Length - 1);
             string[] textSplit = textRead.Split(';');
@@ -120,8 +115,6 @@ namespace Bubla
             }
             for (int k = 0; k < args.Length; k += 2)
             {
-                //Console.WriteLine($"{args[k]}.Equals({key})");
-
                 if (args[k].Equals(key))
                 {
                     args[k] = null;
@@ -161,15 +154,12 @@ namespace Bubla
                 ignoreRead = !ignoreRead;
                 if (ignoreRead) continue;
                 textRead += (char)data;
-                //Console.WriteLine($"{textRead}, {(char)(byte)data == '\n'}");
             }
             if (textRead == "")
             {
                 fileStream.Close();
                 return null;
             }
-            //textRead = Encryption.DencrypText(textRead);
-            //Console.WriteLine(textRead);
             textRead = textRead.Replace("`", " ");
             // split text
             textRead = textRead.Remove(textRead.Length - 1);
