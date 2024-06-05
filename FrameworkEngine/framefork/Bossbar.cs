@@ -34,7 +34,6 @@ namespace Bubla
             const float pixelSize = 0.26f;
             this.scaleBackground = new Vector2f(scale.X * pixelSize * 5, scale.Y * pixelSize * 5);
             this.scaleInside = new Vector2f(scale.X * pixelSize * 4.65f, scale.Y * pixelSize * 4);
-            //Vector2f position = new Vector2f(x + pixelSize * this.size.X / 2f, y + pixelSize * this.size.Y / 2f);
 
             background = new RectangleShape();
             background.FillColor = new Color(outside.R, outside.G, outside.B, 255);
@@ -50,14 +49,6 @@ namespace Bubla
 
             Console.WriteLine(insideRgb.ToString());
             Console.WriteLine(scale);
-            /*sprite = new Sprite();
-            sprite.Texture = new Texture("assets\\" + pathTexture);
-            sprite.Origin = new Vector2f(sprite.Texture.Size.X / 2f, sprite.Texture.Size.Y / 2f);
-            this.scale = scale;
-            Vector2f scaleSprite = new Vector2f(scale.X / sprite.Texture.Size.X, scale.Y / sprite.Texture.Size.Y);
-            sprite.Scale = scaleSprite;
-            position = new Vector2f(position.X + sprite.Texture.Size.X * sprite.Scale.X / 2f, position.Y + sprite.Texture.Size.Y * sprite.Scale.Y / 2f);
-            sprite.Position = position;*/
 
             bossbars.Add(name, this);
         }
@@ -71,17 +62,6 @@ namespace Bubla
         {
             get { return name; }
         }
-
-        /*public float Count
-        {
-            get { return count; }
-            set {
-                count = value;
-                if (count < 0) count = 0;
-                else if (count > 1) count = 1;
-                inside.Size = new Vector2f(scaleInside.X * count, scaleInside.Y);
-            }
-        }*/
 
         public float GetCount()
         {
@@ -132,12 +112,6 @@ namespace Bubla
             get { return position; }
             set { position = value; }
         }
-
-        /*public Vector2f Scale
-        {
-            get { return scale; }
-            set { scale = value; }
-        }*/
 
         public static Dictionary<string, Bossbar> GetBossbars()
         {
