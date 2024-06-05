@@ -42,7 +42,6 @@ namespace MyFramework.framefork.physics
                     if (!gameObjectColission.HasCollider || gameObject == gameObjectColission) continue;
                     try
                     {
-                        //Console.WriteLine(gameObject.GetCollider().Sprite.GetGlobalBounds().Intersects(gameObjectColission.GetCollider().Sprite.GetGlobalBounds()));
                         if (gameObject.GetCollider().Sprite.GetGlobalBounds().Intersects(gameObjectColission.GetCollider().Sprite.GetGlobalBounds()))
                         {
                             LuaScript.InvokeMethod("OnCollisionJoin", new Object[] { gameObject.Name, gameObjectColission.Name, listGameObject.Key });
@@ -52,7 +51,6 @@ namespace MyFramework.framefork.physics
                     catch { }
                 }
             }
-            //Console.WriteLine("add");
         }
 
         public override void Persist(ContactPoint point)
@@ -89,7 +87,6 @@ namespace MyFramework.framefork.physics
                     if (!gameObjectColission.HasCollider || gameObject == gameObjectColission) continue;
                     try
                     {
-                        //Console.WriteLine(gameObject.GetCollider().Sprite.GetGlobalBounds().Intersects(gameObjectColission.GetCollider().Sprite.GetGlobalBounds()));
                         if (gameObject.GetCollider().Sprite.GetGlobalBounds().Intersects(gameObjectColission.GetCollider().Sprite.GetGlobalBounds()))
                         {
                             LuaScript.InvokeMethod("OnCollision", new Object[] { gameObject.Name, gameObjectColission.Name, listGameObject.Key });
@@ -99,13 +96,11 @@ namespace MyFramework.framefork.physics
                     catch { }
                 }
             }
-            //Console.WriteLine("in2");
         }
 
         public override void Result(ContactResult point)
         {
             base.Result(point);
-            //Console.WriteLine("Result");
         }
 
         public override void Remove(ContactPoint point)
@@ -142,7 +137,6 @@ namespace MyFramework.framefork.physics
                     if (!gameObjectColission.HasCollider || gameObject == gameObjectColission) continue;
                     try
                     {
-                        //Console.WriteLine(gameObject.GetCollider().Sprite.GetGlobalBounds().Intersects(gameObjectColission.GetCollider().Sprite.GetGlobalBounds()));
                         if (gameObject.GetCollider().Sprite.GetGlobalBounds().Intersects(gameObjectColission.GetCollider().Sprite.GetGlobalBounds()))
                         {
                             LuaScript.InvokeMethod("OnCollisionExit", new Object[] { gameObject.Name, gameObjectColission.Name, listGameObject.Key });
@@ -152,7 +146,6 @@ namespace MyFramework.framefork.physics
                     catch { }
                 }
             }
-           //Console.WriteLine("Remove");
         }
     }
 }
